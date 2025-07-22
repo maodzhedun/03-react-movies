@@ -7,6 +7,7 @@ import MovieGrid from '../MovieGrid/MovieGrid';
 import css from './App.module.css';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import MovieModal from '../MovieModal/MovieModal';
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -45,6 +46,7 @@ export default function App() {
             onSelect={(movie: Movie) => console.log(movie)}
           />
         )}
+        <MovieModal />
         <div>
           <Toaster />
         </div>
