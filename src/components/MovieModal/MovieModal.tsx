@@ -5,7 +5,7 @@ import css from './MovieModal.module.css';
 
 interface ModalProps {
   movie: Movie;
-  onClose: () => void;
+  onClose: (movie: Movie) => void;
 }
 
 export default function MovieModal({ movie, onClose }: ModalProps) {
@@ -14,7 +14,7 @@ export default function MovieModal({ movie, onClose }: ModalProps) {
       <div className={css.modal}>
         <button
           className={css.closeButton}
-          onAuxClick={onClose}
+          onClick={() => onClose(movie)}
           aria-label="Close modal"
         >
           &times;
