@@ -4,10 +4,10 @@ import { fetchMovies } from '../../services/movieService';
 import SearchBar from '../SearchBar/SearchBar';
 import toast, { Toaster } from 'react-hot-toast';
 import MovieGrid from '../MovieGrid/MovieGrid';
-import css from './App.module.css';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import MovieModal from '../MovieModal/MovieModal';
+import css from './App.module.css';
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -21,11 +21,10 @@ export default function App() {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
     setSelectedMovie(null);
-  }
-
-  // const [query, setQuery] = useState('');
+  };
 
   const handleSearch = async (query: string) => {
     try {
@@ -43,7 +42,6 @@ export default function App() {
       setIsError(true);
     } finally {
       setIsLoading(false);
-      // setMovies([]);
     }
   };
   return (
@@ -53,10 +51,7 @@ export default function App() {
         {isLoading && <Loader />}
         {isError && <ErrorMessage />}
         {movies.length > 0 && (
-          <MovieGrid
-            movies={movies}
-            onSelect={openModal}
-          />
+          <MovieGrid movies={movies} onSelect={openModal} />
         )}
         {isModalOpen && selectedMovie && (
           <MovieModal movie={selectedMovie} onClose={closeModal} />
