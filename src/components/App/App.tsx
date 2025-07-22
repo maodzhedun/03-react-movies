@@ -13,6 +13,11 @@ export default function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
   // const [query, setQuery] = useState('');
 
   const handleSearch = async (query: string) => {
@@ -46,7 +51,8 @@ export default function App() {
             onSelect={(movie: Movie) => console.log(movie)}
           />
         )}
-        <MovieModal />
+        {isModalOpen && <MovieModal onClose={closeModal}/>}
+        
         <div>
           <Toaster />
         </div>
